@@ -6,8 +6,8 @@ import "./globals.css";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-const title = "AA 分账计算器 · Fair Share";
-const description = "记下谁付了钱，自动算出谁该转给谁。无需注册，打开就能用。";
+const title = "荣成看海账本 · 家庭出游 AA 分账";
+const description = "家庭出游分账工具：记录谁先垫付、哪些家庭参与，自动给出最简转账方案。";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -27,9 +27,9 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       url: origin,
       locale: "zh_CN",
-      images: [{ url: `${origin}/og-aa.png`, width: 1734, height: 907, alt: "AA 分账计算器" }],
+      images: [{ url: `${origin}/og.png`, width: 1200, height: 630, alt: "荣成看海账本 · 家庭出游 AA 分账" }],
     },
-    twitter: { card: "summary_large_image", title, description, images: [`${origin}/og-aa.png`] },
+    twitter: { card: "summary_large_image", title, description, images: [`${origin}/og.png`] },
   };
 }
 
