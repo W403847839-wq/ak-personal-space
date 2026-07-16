@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>AK · Personal Space</title>
-    <meta name="description" content="记录想法、分享作品，也让远方的朋友知道我最近在做什么。" />
-    <meta property="og:title" content="AK · Personal Space" />
-    <meta property="og:description" content="记录想法、分享作品，也让远方的朋友知道我最近在做什么。" />
+    <title>AA 分账计算器 · Fair Share</title>
+    <meta name="description" content="记下谁付了钱，自动算出谁该转给谁。无需注册，打开就能用。" />
+    <meta property="og:title" content="AA 分账计算器 · Fair Share" />
+    <meta property="og:description" content="记下谁付了钱，自动算出谁该转给谁。无需注册，打开就能用。" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://w403847839-wq.github.io/ak-personal-space/og.png" />
+    <meta property="og:image" content="https://w403847839-wq.github.io/ak-personal-space/og-aa.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" href="./favicon.svg" />
     <link rel="stylesheet" href="./styles.css" />
@@ -24,8 +24,8 @@
           <span class="brand-copy">PERSONAL SPACE</span>
         </a>
         <nav class="site-nav" aria-label="主导航">
-          <a href="#about">关于</a>
-          <a href="#now">近况</a>
+          <a href="#splitter">开始分账</a>
+          <a href="#guide">使用说明</a>
           <a href="#contact">联系</a>
         </nav>
         <span class="status"><i aria-hidden="true"></i> ONLINE</span>
@@ -34,41 +34,85 @@
       <main id="top">
         <section class="hero" aria-labelledby="hero-title">
           <div class="hero-copy">
-            <p class="eyebrow"><span>HELLO, WORLD</span><span>SHANGHAI · 2026</span></p>
-            <h1 id="hero-title">你好，欢迎来到<br />我的小站<span class="title-dot">。</span></h1>
-            <p class="intro">记录想法、分享作品，也让远方的朋友知道我最近在做什么。</p>
+            <p class="eyebrow"><span>FAIR SHARE</span><span>FRIENDS · 2026</span></p>
+            <h1 id="hero-title">AA 分账，算得<br />清清楚楚<span class="title-dot">。</span></h1>
+            <p class="intro">记下谁付了钱，自动算出谁该转给谁。无需注册，打开就能用。</p>
             <div class="hero-actions">
-              <a class="button button-primary" href="#about">认识我 <span aria-hidden="true">↘</span></a>
-              <a class="button button-secondary" href="#contact">联系我 <span aria-hidden="true">→</span></a>
+              <a class="button button-primary" href="#splitter">开始分账 <span aria-hidden="true">↘</span></a>
+              <a class="button button-secondary" href="#guide">使用说明 <span aria-hidden="true">→</span></a>
             </div>
           </div>
 
           <div class="orbital" aria-hidden="true">
             <div class="orbit orbit-outer"><span></span></div>
             <div class="orbit orbit-inner"><span></span></div>
-            <div class="orbit-core"><b>AK</b><small>SPACE / 01</small></div>
-            <span class="orbit-label orbit-label-top">IDEAS IN MOTION</span>
-            <span class="orbit-label orbit-label-bottom">EST. 2026</span>
+            <div class="orbit-core"><b>AA</b><small>FAIR / SHARE</small></div>
+            <span class="orbit-label orbit-label-top">BALANCE IN MOTION</span>
+            <span class="orbit-label orbit-label-bottom">SETTLE FAIRLY</span>
           </div>
         </section>
 
-        <section class="story-grid" aria-label="个人介绍">
-          <article class="story-card" id="about">
+        <section class="splitter" id="splitter" aria-labelledby="splitter-title">
+          <div class="splitter-heading">
+            <div><p class="section-label">AA SPLITTER / 01</p><h2 id="splitter-title">这顿饭，谁该转给谁？</h2></div>
+            <p>所有消费默认由当前成员平均分摊，计算结果会保存在这台设备上。</p>
+          </div>
+          <div class="splitter-stats" aria-live="polite">
+            <div><span>总消费</span><strong id="total-spend">¥450.00</strong></div>
+            <div><span>参与人数</span><strong id="member-count">3</strong></div>
+            <div><span>人均</span><strong id="per-person">¥150.00</strong></div>
+          </div>
+          <div class="splitter-layout">
+            <div class="splitter-column">
+              <div class="tool-block">
+                <div class="tool-title"><span>01</span><h3>添加成员</h3></div>
+                <form class="inline-form" id="member-form">
+                  <label class="sr-only" for="member-name">成员姓名</label>
+                  <input id="member-name" placeholder="输入姓名" maxlength="12" />
+                  <button type="submit">添加</button>
+                </form>
+                <div class="member-list" id="member-list" aria-label="当前成员"></div>
+              </div>
+              <div class="tool-block">
+                <div class="tool-title"><span>02</span><h3>记录消费</h3></div>
+                <form class="expense-form" id="expense-form">
+                  <label>消费项目<input id="expense-title" placeholder="例如：晚餐" maxlength="20" /></label>
+                  <label>金额（元）<input id="expense-amount" type="number" inputmode="decimal" min="0.01" step="0.01" placeholder="0.00" /></label>
+                  <label>付款人<select id="expense-payer"></select></label>
+                  <button type="submit">加入账单 <span aria-hidden="true">＋</span></button>
+                </form>
+              </div>
+            </div>
+            <div class="splitter-column">
+              <div class="tool-block expense-block">
+                <div class="tool-title"><span>03</span><h3>消费明细</h3></div>
+                <div class="expense-list" id="expense-list"></div>
+              </div>
+              <div class="settlement" aria-live="polite">
+                <div class="tool-title"><span>RESULT</span><h3>最简结算</h3></div>
+                <ol class="transfer-list" id="transfer-list"></ol>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="story-grid" id="guide" aria-label="使用说明">
+          <article class="story-card">
             <div class="card-topline"><span>01</span><span aria-hidden="true">↗</span></div>
-            <h2>关于我</h2>
-            <p>喜欢把复杂的事情变简单，也喜欢摄影、旅行和认真生活。</p>
+            <h2>添加成员</h2>
+            <p>先写下参与分账的朋友，至少保留两个人。</p>
             <div class="card-signal" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
           </article>
-          <article class="story-card" id="now">
+          <article class="story-card">
             <div class="card-topline"><span>02</span><span aria-hidden="true">↗</span></div>
-            <h2>最近在做</h2>
-            <p>搭建这个属于自己的互联网角落，之后会慢慢放进更多作品。</p>
+            <h2>记录消费</h2>
+            <p>输入每笔消费、金额和付款人，默认大家平均分摊。</p>
             <div class="card-signal" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
           </article>
           <article class="story-card" id="contact">
             <div class="card-topline"><span>03</span><span aria-hidden="true">↗</span></div>
-            <h2>保持联系</h2>
-            <p>如果你也对创造有兴趣，欢迎来聊聊。</p>
+            <h2>一键结算</h2>
+            <p>系统自动合并债务，给出尽量少的转账步骤。</p>
             <div class="card-signal" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
           </article>
         </section>
@@ -79,5 +123,6 @@
         <a href="#top">回到顶部 <span aria-hidden="true">↑</span></a>
       </footer>
     </div>
+    <script src="./app.js"></script>
   </body>
 </html>

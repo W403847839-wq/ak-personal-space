@@ -6,8 +6,8 @@ import "./globals.css";
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
 const geistMono = Geist_Mono({ variable: "--font-geist-mono", subsets: ["latin"] });
 
-const title = "AK · Personal Space";
-const description = "记录想法、分享作品，也让远方的朋友知道我最近在做什么。";
+const title = "AA 分账计算器 · Fair Share";
+const description = "记下谁付了钱，自动算出谁该转给谁。无需注册，打开就能用。";
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -27,9 +27,9 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       url: origin,
       locale: "zh_CN",
-      images: [{ url: `${origin}/og.png`, width: 1734, height: 907, alt: "AK Personal Space" }],
+      images: [{ url: `${origin}/og-aa.png`, width: 1734, height: 907, alt: "AA 分账计算器" }],
     },
-    twitter: { card: "summary_large_image", title, description, images: [`${origin}/og.png`] },
+    twitter: { card: "summary_large_image", title, description, images: [`${origin}/og-aa.png`] },
   };
 }
 
